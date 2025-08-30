@@ -1,6 +1,6 @@
 {
   "name": "francis-jay",
-  "homepage": "https://Longlongzeronine.github.io/Francis-Portfolio/",
+  "homepage": "https://Longlongzeronine.github.io/francis-portfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,8 +9,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^7.0.0",
