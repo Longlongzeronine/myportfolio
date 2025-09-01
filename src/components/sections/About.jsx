@@ -1,4 +1,5 @@
 import { RevealOnScroll } from "../RevealOnScroll";
+import Particles from "../../Particles"; // make sure the path is correct
 import { FaHtml5, FaReact, FaVuejs, FaBootstrap, FaNodeJs, FaPython, FaPhp, FaDatabase, FaFigma } from "react-icons/fa";
 import { SiTailwindcss, SiMysql, SiPhpmyadmin } from "react-icons/si";
 import myImage from './sample-proj/2.png';
@@ -22,9 +23,25 @@ export const About = () => {
     ];
 
     return (
-        <section id="about" className="min-h-screen flex items-center justify-center px-4 md:px-8 py-20 bg-slate-950">
+        <section
+            id="about"
+            className="min-h-screen flex items-center justify-center relative bg-slate-950 pt-10 overflow-hidden"
+        >
+            {/* Animated Particles Background */}
+            <Particles 
+                className="absolute inset-0 z-0 w-full h-full"
+                particleCount={2000}             
+                particleSpread={40}             
+                particleBaseSize={200}          
+                speed={0.25}                    
+                moveParticlesOnHover={true}     
+                hoverEffectStrength={0.5}       
+                alphaParticles={false}          
+                disableRotation={true}
+            />
+
             <RevealOnScroll>
-                <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 w-full max-w-7xl">
+                <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 w-full max-w-7xl z-10">
                     
                     {/* Left Content */}
                     <div className="w-full md:w-3/4">

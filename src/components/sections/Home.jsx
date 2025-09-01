@@ -1,21 +1,26 @@
 import { RevealOnScroll } from "../RevealOnScroll";
-import myImage from './sample-proj/1.png'; // Adjust the path according to your actual file structure
+import Particles from "../../Particles"; // adjust path if needed
+import myImage from './sample-proj/1.png';
 import resume from './sample-proj/resume.pdf';
 
 export const Home = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative bg-slate-950 pt-10"
+      className="min-h-screen flex items-center justify-center relative bg-slate-950 pt-10 overflow-hidden"
     >
-      {/* Meteor Background */}
-<div className="snowflake-container">
-  {Array.from({ length: 60 }).map((_, i) => (
-    <div className="snowflake" key={i}>❄</div>
-  ))}
-</div>
-
-
+      {/* Animated Particles Background */}
+      <Particles 
+        className="absolute inset-0 z-0 w-full h-full"
+        particleCount={2000}             // increase particle count
+        particleSpread={40}             // spread them out more
+        particleBaseSize={200}          // bigger particles
+        speed={0.25}                    // faster movement
+        moveParticlesOnHover={true}     // follow mouse
+        hoverEffectStrength={0.5}       // how strongly particles move with mouse
+        alphaParticles={false}          // opaque particles
+        disableRotation={true}
+      />
 
       <RevealOnScroll>
         <div className="flex items-center z-10 px-4 gap-4">
@@ -44,7 +49,7 @@ export const Home = () => {
               </a>
 
               <a
-                href="#projects"
+                href="#about"
                 className="border border-gray-500/50 text-white py-3 px-6 rounded font-medium transition-all duration-200 
                 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59, 130, 246, 0.2)] hover:bg-dark-100"
               >
