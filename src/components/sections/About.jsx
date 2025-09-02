@@ -20,6 +20,7 @@ export const About = () => {
         { name: "Python", icon: <FaPython className="text-yellow-400 text-2xl" /> },
         { name: "MySQL", icon: <SiMysql className="text-blue-500 text-2xl" /> },
         { name: "PhpMyAdmin", icon: <SiPhpmyadmin className="text-orange-400 text-2xl" /> },
+        { name: "SQLyog", icon: <FaDatabase className="text-red-500 text-2xl" /> }, // ✅ Added SQLyog
     ];
 
     return (
@@ -44,7 +45,7 @@ export const About = () => {
                 <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 w-full max-w-7xl z-10">
                     
                     {/* Left Content */}
-                    <div className="w-full md:w-3/4">
+                    <div className="w-full md:w-3/4 mb-10">
                         <h2 className="text-3xl font-bold mb-8 text-light text-center md:text-left">
                             About Me
                         </h2>
@@ -106,7 +107,7 @@ export const About = () => {
                                 </ul>
                             </div>
 
-                            <div className="p-6 rounded-xl border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
+                            <div className="p-6 rounded-xl border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer ">
                                 <h3 className="text-xl font-bold mb-4 text-white">📞 Contact Information</h3>
                                 <div className="space-y-4 text-gray-300">
                                     <div>
