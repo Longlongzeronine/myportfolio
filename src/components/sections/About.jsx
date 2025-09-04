@@ -1,17 +1,17 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import Particles from "../../Particles"; // make sure the path is correct
-import { FaHtml5, FaReact, FaVuejs, FaBootstrap, FaNodeJs, FaPython, FaPhp, FaDatabase, FaFigma } from "react-icons/fa";
-import { SiTailwindcss, SiMysql, SiPhpmyadmin } from "react-icons/si";
+import { FaHtml5, FaReact, FaBootstrap, FaNodeJs, FaPython, FaPhp, FaDatabase, FaVuejs } from "react-icons/fa";
+import { SiTailwindcss, SiMysql, SiPhpmyadmin, SiVite } from "react-icons/si";
 import myImage from './sample-proj/2.png';
 
 export const About = () => {
     const frontendSkills = [
         { name: "HTML", icon: <FaHtml5 className="text-orange-500 text-2xl" /> },
         { name: "React", icon: <FaReact className="text-cyan-400 text-2xl" /> },
+        { name: "Vite", icon: <SiVite className="text-purple-400 text-2xl" /> },
         { name: "Vue", icon: <FaVuejs className="text-green-500 text-2xl" /> },
         { name: "Bootstrap", icon: <FaBootstrap className="text-purple-500 text-2xl" /> },
         { name: "TailwindCSS", icon: <SiTailwindcss className="text-sky-400 text-2xl" /> },
-        { name: "Figma", icon: <FaFigma className="text-pink-500 text-2xl" /> },
     ];
 
     const backendSkills = [
@@ -20,7 +20,7 @@ export const About = () => {
         { name: "Python", icon: <FaPython className="text-yellow-400 text-2xl" /> },
         { name: "MySQL", icon: <SiMysql className="text-blue-500 text-2xl" /> },
         { name: "PhpMyAdmin", icon: <SiPhpmyadmin className="text-orange-400 text-2xl" /> },
-        { name: "SQLyog", icon: <FaDatabase className="text-red-500 text-2xl" /> }, // ✅ Added SQLyog
+        { name: "SQLyog", icon: <FaDatabase className="text-red-500 text-2xl" /> },
     ];
 
     return (
@@ -35,7 +35,7 @@ export const About = () => {
                 particleSpread={40}             
                 particleBaseSize={200}          
                 speed={0.25}                    
-                moveParticlesOnHover={true}     
+                moveParticlesOnHover={false}     
                 hoverEffectStrength={0.5}       
                 alphaParticles={false}          
                 disableRotation={true}
