@@ -20,12 +20,11 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
       {
         root: null,
         rootMargin: "0px",
-        threshold: 0.6, // Adjust depending on how strict you want section visibility
+        threshold: 0.6,
       }
     );
 
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
   }, []);
 
@@ -34,44 +33,40 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
   };
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-white border-b border-gray-300 shadow-lg">
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <a href="#home" className="font-mono text-xl font-bold text-black">
-            Francis On
-            <span className="font-bold mb-6 bg-gradient-to-r from-[rgba(80,61,168,1)] to-[rgba(80,61,168,0.7)] bg-clip-text text-transparent">
-              .Web
-            </span>
-          </a>
-
-          <div
-            className="w-7 h-5 relative cursor-pointer z-40 md:hidden text-black"
-            onClick={() => setMenuOpen((prev) => !prev)}
-          >
-            &#9776;
-          </div>
-
-          <div className="hidden md:flex items-center space-x-8">
-            {[
-              { href: "#home", label: "Home" },
-              { href: "#projects", label: "Projects" },
-              { href: "#about", label: "About" },
-              { href: "#contact", label: "Contact" },
-            ].map(({ href, label }) => (
+    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
+      <div className="flex items-center justify-center bg-white rounded-2xl px-8 py-3 shadow-md border border-gray-200">
+        <ul className="flex items-center space-x-10 text-base font-mono text-black">
+          {[
+            { href: "#home", label: "Home" },
+            { href: "#projects", label: "Projects" },
+            { href: "#about", label: "About" },
+            { href: "#contact", label: "Contact" },
+          ].map(({ href, label }) => (
+            <li key={href}>
               <a
-                key={href}
                 href={href}
-                className={`transition-colors ${
-                  activeLink === href
-                    ? "text-[rgba(80,61,168,1)] font-semibold"
-                    : "text-black hover:text-gray-700"
-                }`}
                 onClick={() => handleLinkClick(href)}
+                className={`relative transition duration-300 ${
+                  activeLink === href
+                    ? "text-[#503DA8] font-semibold"
+                    : "text-gray-500 hover:text-[#503DA8]"
+                }`}
               >
                 {label}
+                {activeLink === href && (
+                  <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#503DA8] rounded-full" />
+                )}
               </a>
-            ))}
-          </div>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile menu icon (optional) */}
+        <div
+          className="w-7 h-5 relative cursor-pointer z-50 text-black md:hidden ml-4"
+          onClick={() => setMenuOpen((prev) => !prev)}
+        >
+          &#9776;
         </div>
       </div>
     </nav>

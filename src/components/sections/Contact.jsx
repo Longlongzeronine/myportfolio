@@ -2,12 +2,13 @@ import { useState } from "react";
 import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
 import myImage from './sample-proj/1.svg';
-import Particles from "../../Particles"; // ✅ Particle Background
+import Particles from "../../Particles";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    company: "",
     subject: "",
     message: "",
   });
@@ -22,11 +23,15 @@ export const Contact = () => {
         e.target,
         import.meta.env.VITE_PUBLIC_KEY
       )
-      .then(() => {
+      .then((res) => {
+        console.log("SUCCESS ✅", res.status, res.text);
         alert("Message Sent!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        setFormData({ name: "", email: "", company: "", subject: "", message: "" });
       })
-      .catch(() => alert("Oops! Something went wrong. Please try again."));
+      .catch((err) => {
+        console.error("FAILED ❌", err);
+        alert("Oops! Something went wrong. Please try again.");
+      });
   };
 
   return (
@@ -34,7 +39,6 @@ export const Contact = () => {
       id="contact" 
       className="relative min-h-screen flex items-center justify-center py-20 bg-white px-4 overflow-hidden"
     >
-      {/* ✅ Particle Background */}
       <Particles 
         className="absolute inset-0 w-full h-full -z-10"
         particleCount={400}
@@ -50,7 +54,6 @@ export const Contact = () => {
 
       <RevealOnScroll>
         <div className="w-full max-w-4xl mx-auto grid md:grid-cols-2 items-center gap-20 p-8 relative z-10">
-          {/* Left Illustration */}
           <div className="flex justify-center">
             <img
               src={myImage}
@@ -59,7 +62,6 @@ export const Contact = () => {
             />
           </div>
 
-          {/* Right Form */}
           <div>
             <h1 className="text-slate-950 text-3xl md:text-5xl font-bold mb-6 font-sans">
               Let's <span className="text-violet-900">Talk</span>
@@ -81,12 +83,21 @@ export const Contact = () => {
 
               <input
                 type="email"
-                name="email"
+                name="email" // This will be used as reply-to in EmailJS
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="Email"
                 className="w-full text-slate-900 rounded-md py-2.5 px-4 border border-gray-300 text-sm outline-0 focus:border-blue-500 font-sans"
                 required
+              />
+
+              <input
+                type="text"
+                name="company"
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                placeholder="Company"
+                className="w-full text-slate-900 rounded-md py-2.5 px-4 border border-gray-300 text-sm outline-0 focus:border-blue-500 font-sans"
               />
 
               <input
