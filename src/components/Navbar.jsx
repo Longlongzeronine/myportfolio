@@ -35,7 +35,9 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
   return (
     <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
       <div className="flex items-center justify-center bg-white rounded-2xl px-8 py-3 shadow-md border border-gray-200">
-        <ul className="flex items-center space-x-10 text-base font-mono text-black">
+        
+        {/* Desktop Nav (hidden on small screens) */}
+        <ul className="hidden md:flex items-center space-x-10 text-base font-mono text-black">
           {[
             { href: "#home", label: "Home" },
             { href: "#projects", label: "Projects" },
@@ -61,7 +63,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
           ))}
         </ul>
 
-        {/* Mobile menu icon (optional) */}
+        {/* Mobile menu icon (only visible on small screens) */}
         <div
           className="w-7 h-5 relative cursor-pointer z-50 text-black md:hidden ml-4"
           onClick={() => setMenuOpen((prev) => !prev)}
