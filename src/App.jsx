@@ -7,7 +7,8 @@ import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
 import { Projects } from "./components/sections/Projects";
 import { Contact } from "./components/sections/Contact";
-import { Footer } from "./components/Footer"; // ✅ Valid import at top
+import { Footer } from "./components/Footer";
+import { SocialNavbar } from "./components/SocialNavbar"; // ✅ Added import
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -23,13 +24,18 @@ function App() {
       >
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+
         <main className="flex-1 w-full">
           <Home />
           <Projects />
           <About />
           <Contact />
         </main>
-        <Footer /> {/* ✅ Render Footer without invalid import */}
+
+        {/* ✅ Social Navbar on middle-right */}
+        <SocialNavbar />
+
+        <Footer />
       </div>
     </>
   );
