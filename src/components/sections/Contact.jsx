@@ -63,9 +63,13 @@ export const Contact = () => {
           </div>
 
           <div>
-            <h1 className="text-slate-950 text-3xl md:text-5xl font-bold mb-6 font-sans">
-              Let's <span className="text-violet-900">Talk</span>
-            </h1>
+<h1 className="text-3xl md:text-5xl font-bold mb-6 font-sans text-slate-950">
+  Let's{" "}
+  <span className="bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-800 bg-clip-text text-transparent">
+    Talk
+  </span>
+</h1>
+
             <p className="text-md text-slate-500 mb-6 leading-relaxed font-sans">
               Have some big idea or brand to develop and need help? Then reach out — we'd love to hear about your project and provide help.
             </p>
