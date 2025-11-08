@@ -112,7 +112,7 @@ export const About = () => {
                                 <div className="space-y-4 text-gray-300">
                                     <div>
                                         <h4 className="font-semibold">Mobile number</h4>
-                                        <p>09022334455</p>
+                                        <p>09079254972</p>
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">Email</h4>
@@ -120,7 +120,7 @@ export const About = () => {
                                     </div>
                                     <div>
                                         <h4 className="font-semibold">Address</h4>
-                                        <p>Secret</p>
+                                        <p>Pangi Maco Davao De Oro</p>
                                     </div>
                                 </div>
                             </div>
