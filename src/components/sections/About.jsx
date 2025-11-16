@@ -1,7 +1,7 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import Particles from "../../Particles"; // make sure the path is correct
-import { FaHtml5, FaReact, FaBootstrap, FaNodeJs, FaPython, FaPhp, FaDatabase, FaVuejs } from "react-icons/fa";
-import { SiTailwindcss, SiMysql, SiPhpmyadmin, SiVite } from "react-icons/si";
+import { FaHtml5, FaReact, FaBootstrap, FaNodeJs, FaPython, FaPhp, FaDatabase } from "react-icons/fa";
+import { SiTailwindcss, SiMysql, SiPhpmyadmin, SiVite, SiFlutter } from "react-icons/si";
 import myImage from './sample-proj/2.png';
 
 export const About = () => {
@@ -9,7 +9,7 @@ export const About = () => {
         { name: "HTML", icon: <FaHtml5 className="text-orange-500 text-2xl" /> },
         { name: "React", icon: <FaReact className="text-cyan-400 text-2xl" /> },
         { name: "Vite", icon: <SiVite className="text-purple-400 text-2xl" /> },
-        { name: "Vue", icon: <FaVuejs className="text-green-500 text-2xl" /> },
+        { name: "Flutter", icon: <SiFlutter className="text-blue-400 text-2xl" /> },
         { name: "Bootstrap", icon: <FaBootstrap className="text-purple-500 text-2xl" /> },
         { name: "TailwindCSS", icon: <SiTailwindcss className="text-sky-400 text-2xl" /> },
     ];
@@ -18,7 +18,7 @@ export const About = () => {
         { name: "PHP", icon: <FaPhp className="text-indigo-400 text-2xl" /> },
         { name: "Node.js", icon: <FaNodeJs className="text-green-600 text-2xl" /> },
         { name: "Python", icon: <FaPython className="text-yellow-400 text-2xl" /> },
-        { name: "MySQL", icon: <SiMysql className="text-blue-500 text-2xl" /> },
+        { name: "Firebase", icon: <FaDatabase className="text-blue-500 text-2xl" /> },
         { name: "PhpMyAdmin", icon: <SiPhpmyadmin className="text-orange-400 text-2xl" /> },
         { name: "SQLyog", icon: <FaDatabase className="text-red-500 text-2xl" /> },
     ];
@@ -52,7 +52,7 @@ export const About = () => {
 
                         <div className="rounded-xl p-6 md:p-8 border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
                             <p className="text-gray-300 mb-6 text-justify">
-                                Passionate about frontend development and UI design, I thrive on team collaboration and continuously learning new web technologies while creating intuitive, accessible, and visually appealing interfaces that enhance user experience, leveraging modern design systems, optimizing performance, and staying updated with the latest trends and best practices.
+                                Passionate about Flutter development and mobile app design, I focus on creating intuitive, responsive, and visually appealing interfaces. I integrate Firebase backend services and AI chatbot functionality to deliver seamless user experiences.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -99,7 +99,7 @@ export const About = () => {
                                         <strong>B.S in Information Technology</strong> - UMTC University of Mindanao Tagum City (2021-2025)
                                     </li>
                                     <li>
-                                        <strong>Relevant Coursework:</strong> Web Development, Mobile App Development, Front-End Development
+                                        <strong>Relevant Coursework:</strong> Web Development, Mobile App Development, Flutter Development
                                     </li>
                                     <li>
                                         <strong>Intern at AIMHI (2025)</strong> AIMHI is an AI-driven platform that helps contractors cut costs and boost project efficiency.

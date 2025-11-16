@@ -3,7 +3,8 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import myImage from './sample-proj/p-1.png'; 
 import myImage1 from './sample-proj/p-2.png';
 import myImage2 from './sample-proj/p-5.png';  
-import myImage3 from './sample-proj/p-4.png';  
+import myImage3 from './sample-proj/p-4.png'; 
+import myImage4 from './sample-proj/p-6.png';   
 import Particles from "../../Particles"; // ✅ Particle Background
 
 export const Projects = () => {
@@ -149,7 +150,58 @@ export const Projects = () => {
               </div>
             </div>
 
-            {/* Third Card */}
+
+
+            
+            {/* third Card */}
+            <div className="relative rounded-xl border border-black/10 shadow-lg hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition cursor-pointer overflow-hidden">
+              <span className="absolute top-3 right-3 bg-[#b9f2b2] text-[#326e25] text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-sm">
+                Latest
+              </span>
+
+              <img src={myImage1} alt="Barangay Governance Management System" className="w-full h-50 object-cover" />
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2">Barangay Governance Management System</h3>
+                <p className="text-dark mb-4">
+                  The E-BRGY system modernizes barangay administration in the Philippines by automating processes and enhancing transparency.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["Bootstrap", "Hostinger", "MySQL", "PHP"].map((tech, key) => (
+                    <span
+                      key={key}
+                      className={`py-1 px-3 rounded-full text-sm font-medium border transform transition-all duration-300 cursor-pointer hover:scale-105 ${
+                        key % 2 === 0
+                        ? 'bg-[#68b658] border-[#68b658] text-white hover:bg-transparent hover:text-[#68b658]'
+                        : 'bg-lime-200 border-lime-200 text-black hover:bg-transparent hover:text-lime-500'
+                      }`}
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex justify-center gap-4">
+                  <button
+                    onClick={() => setFullScreenImage(myImage1)}
+                    className="flex items-center justify-center gap-2 w-55 py-2 border border-[#68b658] text-[#68b658] rounded-md hover:bg-[#68b658] hover:text-white transition cursor-pointer"
+                  >
+                    👁️ Full Screen
+                  </button>
+                  <button
+                    onClick={handleGithubClick}
+                    className="flex items-center justify-center gap-2 w-55 py-2 border border-lime-300 text-lime-500 rounded-md hover:bg-lime-300 hover:text-black transition cursor-pointer"
+                  >
+                    📁 GitHub
+                  </button>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            {/* Fourth Card */}
             <div className="relative rounded-xl border border-black/10 shadow-lg hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition cursor-pointer overflow-hidden">
               <span className="absolute top-3 right-3 bg-[#aef0df] text-[#145f4a] text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-sm">
                 Latest
@@ -194,50 +246,59 @@ export const Projects = () => {
               </div>
             </div>
 
-            {/* Fourth Card */}
-            <div className="relative rounded-xl border border-black/10 shadow-lg hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition cursor-pointer overflow-hidden">
-              <span className="absolute top-3 right-3 bg-[#b9f2b2] text-[#326e25] text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-sm">
-                Latest
-              </span>
 
-              <img src={myImage1} alt="Barangay Governance Management System" className="w-full h-50 object-cover" />
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Barangay Governance Management System</h3>
-                <p className="text-dark mb-4">
-                  The E-BRGY system modernizes barangay administration in the Philippines by automating processes and enhancing transparency.
-                </p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {["Bootstrap", "Hostinger", "MySQL", "PHP"].map((tech, key) => (
-                    <span
-                      key={key}
-                      className={`py-1 px-3 rounded-full text-sm font-medium border transform transition-all duration-300 cursor-pointer hover:scale-105 ${
-                        key % 2 === 0
-                        ? 'bg-[#68b658] border-[#68b658] text-white hover:bg-transparent hover:text-[#68b658]'
-                        : 'bg-lime-200 border-lime-200 text-black hover:bg-transparent hover:text-lime-500'
-                      }`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
 
-                <div className="flex justify-center gap-4">
-                  <button
-                    onClick={() => setFullScreenImage(myImage1)}
-                    className="flex items-center justify-center gap-2 w-55 py-2 border border-[#68b658] text-[#68b658] rounded-md hover:bg-[#68b658] hover:text-white transition cursor-pointer"
+
+                    {/* Fifth Card */}
+          <div className="relative rounded-xl border border-black/10 shadow-lg hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(7,123,175,0.2)] transition cursor-pointer overflow-hidden">
+            <span className="absolute top-3 right-3 bg-[#077baf] text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-sm">
+              Latest
+            </span>
+
+            <img src={myImage4} alt="Amoguis Inventory App" className="w-full h-50 object-cover" />
+            <div className="p-6">
+              <h3 className="text-xl font-bold mb-2">Amoguis Inventory App</h3>
+              <p className="text-dark mb-4">
+                This is a Flutter mobile app with Firebase backend, featuring an AI chatbot to assist users with inventory management efficiently.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {["Flutter", "Firebase", "Dart", "AI Chatbot"].map((tech, key) => (
+                  <span
+                    key={key}
+                    className={`py-1 px-3 rounded-full text-sm font-medium border transform transition-all duration-300 cursor-pointer hover:scale-105 ${
+                      key % 2 === 0
+                        ? 'bg-[#077baf] border-[#077baf] text-white hover:bg-transparent hover:text-[#077baf]'
+                        : 'bg-[#cce7f6] border-[#cce7f6] text-[#077baf] hover:bg-transparent hover:text-[#077baf]'
+                    }`}
                   >
-                    👁️ Full Screen
-                  </button>
-                  <button
-                    onClick={handleGithubClick}
-                    className="flex items-center justify-center gap-2 w-55 py-2 border border-lime-300 text-lime-500 rounded-md hover:bg-lime-300 hover:text-black transition cursor-pointer"
-                  >
-                    📁 GitHub
-                  </button>
-                </div>
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              <div className="flex justify-center gap-4">
+                <button
+                  onClick={() => setFullScreenImage(myImage4)}
+                  className="flex items-center justify-center gap-2 w-55 py-2 border border-[#077baf] text-[#077baf] rounded-md hover:bg-[#077baf] hover:text-white transition cursor-pointer"
+                >
+                  👁️ Full Screen
+                </button>
+                <button
+                  onClick={handleGithubClick}
+                  className="flex items-center justify-center gap-2 w-55 py-2 border border-[#cce7f6] text-[#077baf] rounded-md hover:bg-[#cce7f6] hover:text-[#077baf] transition cursor-pointer"
+                >
+                  📁 GitHub
+                </button>
               </div>
             </div>
+          </div>
+
+
+
+
+
 
           </div>
         </div>
