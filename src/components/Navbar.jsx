@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
 
+const NAV_LINKS = [
+  { href: "#home", label: "Home" },
+  { href: "#projects", label: "Projects" },
+  { href: "#about", label: "About" },
+  { href: "#contact", label: "Contact" },
+];
+
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const [activeLink, setActiveLink] = useState("#home");
 
@@ -19,8 +26,8 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
       },
       {
         root: null,
-        rootMargin: "0px",
-        threshold: 0.6,
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: 0,
       }
     );
 
@@ -28,48 +35,58 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
     return () => observer.disconnect();
   }, []);
 
-  const handleLinkClick = (link) => {
-    setActiveLink(link);
-  };
-
   return (
-    <nav className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-      <div className="flex items-center justify-center bg-white rounded-2xl px-8 py-3 shadow-md border border-gray-200">
+    <nav className="fixed top-6 left-0 w-full z-50 flex justify-center px-4">
+      <div 
+        style={{ fontFamily: '"Space Grotesk", sans-serif' }}
+        // Changed rounded-lg to rounded-xl here
+        className="flex items-center justify-between md:justify-center bg-white/95 backdrop-blur-sm px-6 py-3 shadow-md border border-gray-200 rounded-xl"
+      >
         
-        {/* Desktop Nav (hidden on small screens) */}
-        <ul className="hidden md:flex items-center space-x-10 text-base font-mono text-black">
-          {[
-            { href: "#home", label: "Home" },
-            { href: "#projects", label: "Projects" },
-            { href: "#about", label: "About" },
-            { href: "#contact", label: "Contact" },
-          ].map(({ href, label }) => (
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex items-center space-x-8 text-base font-medium">
+          {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
               <a
                 href={href}
-                onClick={() => handleLinkClick(href)}
-                className={`relative transition duration-300 ${
+                onClick={() => setActiveLink(href)}
+                className={`relative transition-colors duration-300 ${
                   activeLink === href
-                    ? "text-[#503DA8] font-semibold"
-                    : "text-gray-500 hover:text-[#503DA8]"
+                    ? "text-[#503DA8] font-bold"
+                    : "text-gray-600 hover:text-[#503DA8]"
                 }`}
               >
                 {label}
                 {activeLink === href && (
-                  <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[#503DA8] rounded-full" />
+                  <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-[#503DA8] rounded-full" />
                 )}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Mobile menu icon (only visible on small screens) */}
-        <div
-          className="w-7 h-5 relative cursor-pointer z-50 text-black md:hidden ml-4"
+        {/* Mobile Menu Button */}
+        <button
+          className="w-6 h-5 flex flex-col justify-between z-50 md:hidden focus:outline-none"
           onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
         >
-          &#9776;
-        </div>
+          <span 
+            className={`h-0.5 w-full bg-black rounded transition-all duration-300 ${
+              menuOpen ? "rotate-45 translate-y-2" : ""
+            }`} 
+          />
+          <span 
+            className={`h-0.5 w-full bg-black rounded transition-all duration-300 ${
+              menuOpen ? "opacity-0" : "opacity-100"
+            }`} 
+          />
+          <span 
+            className={`h-0.5 w-full bg-black rounded transition-all duration-300 ${
+              menuOpen ? "-rotate-45 -translate-y-2.5" : ""
+            }`} 
+          />
+        </button>
       </div>
     </nav>
   );
