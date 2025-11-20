@@ -39,12 +39,11 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
     <nav className="fixed top-6 left-0 w-full z-50 flex justify-center px-4">
       <div 
         style={{ fontFamily: '"Space Grotesk", sans-serif' }}
-        // Changed rounded-lg to rounded-xl here
         className="flex items-center justify-between md:justify-center bg-white/95 backdrop-blur-sm px-6 py-3 shadow-md border border-gray-200 rounded-xl"
       >
         
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center space-x-8 text-base font-medium">
+        {/* Desktop Nav - Increased spacing here (space-x-12) */}
+        <ul className="hidden md:flex items-center space-x-12 text-base font-medium">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
               <a
