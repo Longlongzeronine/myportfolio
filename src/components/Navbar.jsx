@@ -42,8 +42,8 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
         className="flex items-center justify-between md:justify-center bg-white/95 backdrop-blur-sm px-6 py-3 shadow-md border border-gray-200 rounded-xl"
       >
         
-        {/* Desktop Nav - Increased spacing here (space-x-12) */}
-        <ul className="hidden md:flex items-center space-x-12 text-base font-medium">
+        {/* Desktop Nav - Changed to space-x-10 (40px gap) */}
+        <ul className="hidden md:flex items-center space-x-10 text-base font-medium">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
               <a
