@@ -1,7 +1,7 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import Particles from "../../Particles"; // adjust path if needed
 import myImage from './sample-proj/1.png';
-import resume from './sample-proj/FinalResume.pdf'; // updated to FinalResume.pdf
+import resume from './sample-proj/FResume.pdf'; // updated to FinalResume.pdf
 
 export const Home = () => {
   return (
