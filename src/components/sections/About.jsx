@@ -112,7 +112,7 @@ export const About = () => {
                     </div>
 
                     {/* Right Image */}
-                    <div className="w-full md:w-1/4 flex justify-center md:justify-end ml-10 md:block mr-20 hidden">
+                    <div className="w-full md:w-1/4 flex justify-center md:justify-end ml-10 md:block mr-40 hidden">
                         <img
                             src={myImage}
                             alt="Francis Amoguis"
