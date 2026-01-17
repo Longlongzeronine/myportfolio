@@ -90,8 +90,8 @@ export const About = () => {
                             </div>
                         </div>
 
-                        {/* Education & Contact */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                       {/* Education & Contact */}
+                        <div className="mt-8">
                             <div className="p-6 rounded-xl border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
                                 <h3 className="text-xl font-bold mb-4 text-white">🎓 Education</h3>
                                 <ul className="list-disc list-inside text-gray-300 space-y-3">
@@ -107,23 +107,7 @@ export const About = () => {
                                 </ul>
                             </div>
 
-                            <div className="p-6 rounded-xl border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer ">
-                                <h3 className="text-xl font-bold mb-4 text-white">📞 Contact Information</h3>
-                                <div className="space-y-4 text-gray-300">
-                                    <div>
-                                        <h4 className="font-semibold">Mobile number</h4>
-                                        <p>09079254972</p>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold">Email</h4>
-                                        <p>f55876061@gmail.com</p>
-                                    </div>
-                                    <div>
-                                        <h4 className="font-semibold">Address</h4>
-                                        <p>Pangi Maco Davao De Oro</p>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 

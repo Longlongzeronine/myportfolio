@@ -12,22 +12,22 @@ export const Home = () => {
       {/* Animated Particles Background */}
       <Particles 
         className="absolute inset-0 z-0 w-full h-full"
-        particleCount={2000}             // increase particle count
-        particleSpread={40}             // spread them out more
-        particleBaseSize={200}          // bigger particles
-        speed={0.25}                    // faster movement
-        moveParticlesOnHover={true}     // follow mouse
-        hoverEffectStrength={0.5}       // how strongly particles move with mouse
-        alphaParticles={false}          // opaque particles
+        particleCount={2000}             
+        particleSpread={40}             
+        particleBaseSize={200}          
+        speed={0.25}                    
+        moveParticlesOnHover={true}     
+        hoverEffectStrength={0.5}       
+        alphaParticles={false}          
         disableRotation={true}
       />
 
       <RevealOnScroll>
-        <div className="flex items-center z-10 px-4 gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-center z-10 px-4 gap-8 max-w-6xl mx-auto">
           <img
             src={myImage}
             alt="Francis Amoguis"
-            className="w-1/3 h-auto mt-10 hidden md:block"
+            className="w-64 md:w-80 h-auto hidden md:block flex-shrink-0"
           />
           <div className="text-center z-10 px-4">
             <h1 className="text-3xl md:text-7xl font-bold mb-6 text-white">
@@ -39,6 +39,7 @@ export const Home = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+              {/* Resume Button */}
               <a
                 href={resume}
                 target="_blank"
@@ -48,6 +49,7 @@ export const Home = () => {
                 View Resume
               </a>
 
+              {/* About Button */}
               <a
                 href="#about"
                 className="border border-gray-500/50 text-white py-3 px-6 rounded font-medium transition-all duration-200 
