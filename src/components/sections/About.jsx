@@ -26,7 +26,7 @@ export const About = () => {
     return (
         <section
             id="about"
-            className="min-h-screen flex items-center justify-center relative bg-slate-950 pt-10 overflow-hidden"
+            className="min-h-screen flex items-center justify-start relative bg-slate-950 pt-10 overflow-hidden pl-6 md:pl-45"
         >
             {/* Animated Particles Background */}
             <Particles 
@@ -111,14 +111,14 @@ export const About = () => {
                         </div>
                     </div>
 
-                    {/* Right Image */}
-                    <div className="w-full md:w-1/4 flex justify-center md:justify-end ml-10 md:block mr-40 hidden">
-                        <img
-                            src={myImage}
-                            alt="Francis Amoguis"
-                            className="max-w-[250px] md:max-w-[300px] lg:max-w-[400px] rounded-lg"
-                        />
-                    </div>
+        {/* Right Image */}
+        <div className="w-full md:w-1/4 flex justify-center md:justify-end ml-10 md:block mr-40 hidden mt-20">
+            <img
+                src={myImage}
+                alt="Francis Amoguis"
+                className="max-w-[250px] md:max-w-[300px] lg:max-w-[400px] rounded-lg"
+            />
+        </div>
                 </div>
             </RevealOnScroll>
         </section>
