@@ -8,85 +8,6 @@ import myImage4 from './sample-proj/p-6.png';
 import myImage5 from './sample-proj/p-7.png';
 import Particles from "../../Particles";
 
-// Import UM Research Portal images
-import umLogin from '../../assets/Umresearchfinal/login.png';
-import umResearchAssocSignup from '../../assets/Umresearchfinal/ResearchAssociateSignup.png';
-import umCoordDashboard from '../../assets/Umresearchfinal/ResearchCoordinatorDashboard.png';
-import umCoordResearch from '../../assets/Umresearchfinal/ResearchCoordinatorResearchpaper.png';
-import umCoordSignup from '../../assets/Umresearchfinal/ResearchCoordinatorSignup.png';
-import umSignup from '../../assets/Umresearchfinal/Signup(1).png';
-
-// Import Amoguis Inventory images
-import amoguisAI from '../../assets/Amoguis Inventory/AI Store Assistant.png';
-import amoguisExpenses from '../../assets/Amoguis Inventory/Cashiering Expenses.png';
-import amoguisOrder from '../../assets/Amoguis Inventory/Cashiering Order.png';
-import amoguisPaid from '../../assets/Amoguis Inventory/Cashiering Paid.png';
-import amoguisUtang from '../../assets/Amoguis Inventory/Cashiering Utang.png';
-import amoguisDashboard from '../../assets/Amoguis Inventory/Dashboard.png';
-import amoguisDashboard1 from '../../assets/Amoguis Inventory/Dashboard1.png';
-import amoguisDashboard2 from '../../assets/Amoguis Inventory/Dashboard2.png';
-import amoguisDashboard3 from '../../assets/Amoguis Inventory/Dashboard3.png';
-import amoguisProducts from '../../assets/Amoguis Inventory/Products.png';
-import amoguisSalesBayad from '../../assets/Amoguis Inventory/Sales Bayad.png';
-import amoguisSalesUtang from '../../assets/Amoguis Inventory/Sales Utang.png';
-import amoguisSales from '../../assets/Amoguis Inventory/Sales.png';
-
-// Import Barangay Portal images
-import brgy1 from '../../assets/BarangayPortal/Admin/1.jpg';
-import brgy2 from '../../assets/BarangayPortal/Admin/2.jpg';
-import brgy3 from '../../assets/BarangayPortal/Admin/3.jpg';
-import brgy4 from '../../assets/BarangayPortal/Admin/4.jpg';
-import brgy5 from '../../assets/BarangayPortal/Admin/5.jpg';
-import brgy6 from '../../assets/BarangayPortal/Admin/6.jpg';
-import brgy7 from '../../assets/BarangayPortal/Admin/7.jpg';
-import brgy8 from '../../assets/BarangayPortal/Admin/8.jpg';
-import brgy9 from '../../assets/BarangayPortal/Admin/9.jpg';
-import brgy10 from '../../assets/BarangayPortal/Admin/10.jpg';
-import brgy11 from '../../assets/BarangayPortal/Admin/11.jpg';
-import brgy12 from '../../assets/BarangayPortal/Admin/12.jpg';
-import brgy13 from '../../assets/BarangayPortal/Admin/13.jpg';
-import brgy14 from '../../assets/BarangayPortal/Admin/14.jpg';
-import brgy15 from '../../assets/BarangayPortal/Admin/15.jpg';
-import brgy16 from '../../assets/BarangayPortal/Admin/16.jpg';
-import brgy17 from '../../assets/BarangayPortal/Admin/17.jpg';
-import brgy18 from '../../assets/BarangayPortal/Admin/18.png';
-
-// Import PALMPC Coop images
-import coopArchivePrint from '../../assets/CoopPangi/Archive Summary Print.png';
-import coopArchive from '../../assets/CoopPangi/Archive.png';
-import coopCashiering from '../../assets/CoopPangi/Cashiering.png';
-import coopCheckout from '../../assets/CoopPangi/Checkout.png';
-import coopDashboard from '../../assets/CoopPangi/Dashboard.png';
-import coopLogin from '../../assets/CoopPangi/Login.png';
-import coopProductList from '../../assets/CoopPangi/ProductList.png';
-import coopBarcode from '../../assets/CoopPangi/ProductBarcodeList.png';
-import coopProductPrint from '../../assets/CoopPangi/ProductList Print.png';
-import coopSales from '../../assets/CoopPangi/Sales.png';
-import coopReceipt from '../../assets/CoopPangi/View Receipt Archive.png';
-
-// Import UMV Canteen images
-import umvArchive from '../../assets/CoopUMV/Archive.png';
-import umvBadOrders from '../../assets/CoopUMV/Bad Orders.png';
-import umvCashiering from '../../assets/CoopUMV/Cashiering.png';
-import umvCheckout from '../../assets/CoopUMV/Checkout.png';
-import umvDashboard from '../../assets/CoopUMV/Dashboard.png';
-import umvHistory from '../../assets/CoopUMV/History.png';
-import umvLogin from '../../assets/CoopUMV/Login.png';
-import umvBarcode from '../../assets/CoopUMV/ProductBarcodeList.png';
-import umvProductPrint from '../../assets/CoopUMV/ProductList Print.png';
-import umvProductList from '../../assets/CoopUMV/ProductList.png';
-import umvSalesReportPrint from '../../assets/CoopUMV/Sales report print.png';
-import umvSales from '../../assets/CoopUMV/Sales.png';
-import umvViewArchive from '../../assets/CoopUMV/View Archive Records.png';
-import umvViewDetails from '../../assets/CoopUMV/View Details.png';
-// NEW UMV Canteen images
-import umvSalesRoboco from '../../assets/CoopUMV/SalesROBOCO.png';
-import umvCashieringExchange from '../../assets/CoopUMV/CashieringExchangeOrder.png';
-import umvCashieringReturn from '../../assets/CoopUMV/CashieringReturnOrder.png';
-import umvChangeOrderItems from '../../assets/CoopUMV/ChangeOrderItems.png';
-import umvReturnOrderItems from '../../assets/CoopUMV/ReturnOrderItems.png';
-import umvProductBadOrder from '../../assets/CoopUMV/ProductListBadOrderItems.png';
-import umvProductHistory from '../../assets/CoopUMV/ProductHistory.png';
 
 // ✅ Custom hook to extract colors from an image
 const useImageColors = (imageSrc) => {
@@ -440,78 +361,63 @@ export const Projects = () => {
   };
 
   // ✅ Project data array with multiple images
-  const projects = [
-    {
-      image: myImage,
-      title: "UM Research Portal",
-      description: "A website to efficiently manage, track, and store research titles, enabling categorization, collaboration, and easy searchable access to research projects.",
-      technologies: ["Bootstrap", "HTML", "MySQL", "PHP"],
-      colors: colors0,
-      gallery: [umLogin, umResearchAssocSignup, umCoordDashboard, umCoordResearch, umCoordSignup, umSignup]
-    },
-    {
-      image: myImage3,
-      title: "My Portfolio",
-      description: "A portfolio of modern, responsive web apps built with React.js, Tailwind CSS, HTML, and CSS — focused on clean, intuitive design.",
-      technologies: ["Tailwind CSS", "React JS", "HTML", "CSS"],
-      colors: colors3,
-      gallery: [myImage3]
-    },
-    {
-      image: myImage1,
-      title: "Barangay Governance Management System",
-      description: "The E-BRGY system modernizes barangay administration in the Philippines by automating processes and enhancing transparency.",
-      technologies: ["Bootstrap", "Hostinger", "MySQL", "PHP"],
-      colors: colors1,
-      gallery: [brgy1, brgy2, brgy3, brgy4, brgy5, brgy6, brgy7, brgy8, brgy9, brgy10, brgy11, brgy12, brgy13, brgy14, brgy15, brgy16, brgy17, brgy18]
-    },
-    {
-      image: myImage2,
-      title: "PALMPC Coop Cashiering & Inventory System",
-      description: "A cooperative cashiering and inventory system with barcode scanning and thermal printing for fast and accurate transactions.",
-      technologies: [".NET", "Visual Basic .NET", "SQLYOG", "Github"],
-      colors: colors2,
-      gallery: [coopArchivePrint, coopArchive, coopCashiering, coopCheckout, coopDashboard, coopLogin, coopProductList, coopBarcode, coopProductPrint, coopSales, coopReceipt]
-    },
-    {
-      image: myImage5,
-      title: "UMV Canteen Cashiering & Inventory System",
-      description: "A comprehensive POS and inventory management platform equipped with barcode technology and thermal printing capabilities for seamless transaction processing.",
-      technologies: [".NET", "Visual Basic .NET", "SQLYOG", "Github"],
-      colors: colors5,
-      gallery: [
-        umvArchive, 
-        umvBadOrders, 
-        umvCashiering, 
-        umvCheckout, 
-        umvDashboard, 
-        umvHistory, 
-        umvLogin, 
-        umvBarcode, 
-        umvProductPrint, 
-        umvProductList, 
-        umvSalesReportPrint, 
-        umvSales, 
-        umvViewArchive, 
-        umvViewDetails,
-        umvSalesRoboco,
-        umvCashieringExchange,
-        umvCashieringReturn,
-        umvChangeOrderItems,
-        umvReturnOrderItems,
-        umvProductBadOrder,
-        umvProductHistory
-      ]
-    },
-    {
-      image: myImage4,
-      title: "Amoguis Inventory App",
-      description: "This is a Flutter mobile app with Firebase backend, featuring an AI chatbot to assist users with inventory management efficiently.",
-      technologies: ["Flutter", "Firebase", "Dart", "AI Chatbot"],
-      colors: colors4,
-      gallery: [amoguisAI, amoguisExpenses, amoguisOrder, amoguisPaid, amoguisUtang, amoguisDashboard, amoguisDashboard1, amoguisDashboard2, amoguisDashboard3, amoguisProducts, amoguisSalesBayad, amoguisSalesUtang, amoguisSales]
-    }
-  ];
+const projects = [
+  {
+    image: myImage,
+    title: "UM Research Portal",
+    description:
+      "A website to efficiently manage, track, and store research titles, enabling categorization, collaboration, and easy searchable access to research projects.",
+    technologies: ["Bootstrap", "HTML", "MySQL", "PHP"],
+    colors: colors0,
+    gallery: [myImage]
+  },
+  {
+    image: myImage3,
+    title: "My Portfolio",
+    description:
+      "A portfolio of modern, responsive web apps built with React.js, Tailwind CSS, HTML, and CSS — focused on clean, intuitive design.",
+    technologies: ["Tailwind CSS", "React JS", "HTML", "CSS"],
+    colors: colors3,
+    gallery: [myImage3]
+  },
+  {
+    image: myImage1,
+    title: "Barangay Governance Management System",
+    description:
+      "The E-BRGY system modernizes barangay administration in the Philippines by automating processes and enhancing transparency.",
+    technologies: ["Bootstrap", "Hostinger", "MySQL", "PHP"],
+    colors: colors1,
+    gallery: [myImage1]
+  },
+  {
+    image: myImage2,
+    title: "PALMPC Coop Cashiering & Inventory System",
+    description:
+      "A cooperative cashiering and inventory system with barcode scanning and thermal printing for fast and accurate transactions.",
+    technologies: [".NET", "Visual Basic .NET", "SQLYOG", "Github"],
+    colors: colors2,
+    gallery: [myImage2]
+  },
+  {
+    image: myImage5,
+    title: "UMV Canteen Cashiering & Inventory System",
+    description:
+      "A comprehensive POS and inventory management platform equipped with barcode technology and thermal printing capabilities for seamless transaction processing.",
+    technologies: [".NET", "Visual Basic .NET", "SQLYOG", "Github"],
+    colors: colors5,
+    gallery: [myImage5]
+  },
+  {
+    image: myImage4,
+    title: "Amoguis Inventory App",
+    description:
+      "This is a Flutter mobile app with Firebase backend, featuring an AI chatbot to assist users with inventory management efficiently.",
+    technologies: ["Flutter", "Firebase", "Dart", "AI Chatbot"],
+    colors: colors4,
+    gallery: [myImage4]
+  }
+];
+
 
   return (
     <section id="projects" className="relative min-h-screen flex items-center justify-center py-20 bg-white overflow-hidden">
