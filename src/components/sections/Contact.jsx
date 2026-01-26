@@ -3,8 +3,11 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "emailjs-com";
 import myImage from './sample-proj/1.svg';
 import Particles from "../../Particles";
+import contactData from './Endpoint/contact.json';
 
 export const Contact = () => {
+  const { contact } = contactData;
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,7 +18,6 @@ export const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     emailjs
       .sendForm(
         import.meta.env.VITE_SERVICE_ID,
@@ -25,21 +27,27 @@ export const Contact = () => {
       )
       .then((res) => {
         console.log("SUCCESS ✅", res.status, res.text);
-        alert("Message Sent!");
-        setFormData({ name: "", email: "", company: "", subject: "", message: "" });
+        alert(contact.form.submitButton.successMessage);
+        setFormData({
+          name: "",
+          email: "",
+          company: "",
+          subject: "",
+          message: ""
+        });
       })
       .catch((err) => {
         console.error("FAILED ❌", err);
-        alert("Oops! Something went wrong. Please try again.");
+        alert(contact.form.submitButton.errorMessage);
       });
   };
 
   return (
-    <section 
-      id="contact" 
+    <section
+      id="contact"
       className="relative min-h-screen flex items-center justify-center py-20 bg-white px-4 overflow-hidden"
     >
-      <Particles 
+      <Particles
         className="absolute inset-0 w-full h-full -z-10"
         particleCount={400}
         particleSpread={30}
@@ -57,78 +65,63 @@ export const Contact = () => {
           <div className="flex justify-center">
             <img
               src={myImage}
-              alt="Francis Amoguis"
+              alt={contact.imageAlt}
               className="w-full max-w-3xl h-auto animate-float"
             />
           </div>
 
           <div>
-<h1 className="text-3xl md:text-5xl font-bold mb-6 font-sans text-slate-950">
-  Let's{" "}
-  <span className="bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-800 bg-clip-text text-transparent">
-    Talk
-  </span>
-</h1>
+            <h1 className="text-3xl md:text-5xl font-bold mb-6 font-sans text-slate-950">
+              {contact.title}{" "}
+              <span className="bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-800 bg-clip-text text-transparent">
+                {contact.titleHighlight}
+              </span>
+            </h1>
 
             <p className="text-md text-slate-500 mb-6 leading-relaxed font-sans">
-              Have some big idea or brand to develop and need help? Then reach out — we'd love to hear about your project and provide help.
+              {contact.description}
             </p>
 
             <form className="space-y-4" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                placeholder="Name"
-                className="w-full text-slate-900 rounded-md py-2.5 px-4 border border-gray-300 text-sm outline-0 focus:border-blue-500 font-sans"
-                required
-              />
+              {contact.form.fields.map((field, index) => {
+                if (field.type === "textarea") {
+                  return (
+                    <textarea
+                      key={index}
+                      name={field.name}
+                      value={formData[field.name]}
+                      onChange={(e) =>
+                        setFormData({ ...formData, [field.name]: e.target.value })
+                      }
+                      placeholder={field.placeholder}
+                      rows={field.rows}
+                      className="w-full text-slate-900 rounded-md px-4 border border-gray-300 text-sm pt-2.5 outline-0 focus:border-blue-500 font-sans"
+                      required={field.required}
+                    />
+                  );
+                }
 
-              <input
-                type="email"
-                name="email" // This will be used as reply-to in EmailJS
-                value={formData.email}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                placeholder="Email"
-                className="w-full text-slate-900 rounded-md py-2.5 px-4 border border-gray-300 text-sm outline-0 focus:border-blue-500 font-sans"
-                required
-              />
+                return (
+                  <input
+                    key={index}
+                    type={field.type}
+                    name={field.name}
+                    value={formData[field.name]}
+                    onChange={(e) =>
+                      setFormData({ ...formData, [field.name]: e.target.value })
+                    }
+                    placeholder={field.placeholder}
+                    className="w-full text-slate-900 rounded-md py-2.5 px-4 border border-gray-300 text-sm outline-0 focus:border-blue-500 font-sans"
+                    required={field.required}
+                  />
+                );
+              })}
 
-              <input
-                type="text"
-                name="company"
-                value={formData.company}
-                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                placeholder="Company"
-                className="w-full text-slate-900 rounded-md py-2.5 px-4 border border-gray-300 text-sm outline-0 focus:border-blue-500 font-sans"
-              />
-
-              <input
-                type="text"
-                name="subject"
-                value={formData.subject}
-                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                placeholder="Subject"
-                className="w-full text-slate-900 rounded-md py-2.5 px-4 border border-gray-300 text-sm outline-0 focus:border-blue-500 font-sans"
-                required
-              />
-
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Message"
-                rows="6"
-                className="w-full text-slate-900 rounded-md px-4 border border-gray-300 text-sm pt-2.5 outline-0 focus:border-blue-500 font-sans"
-                required
-              ></textarea>
-
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="text-white bg-slate-950 hover:bg-violet-900 rounded-md text-sm font-medium px-4 py-2 w-full cursor-pointer mt-6 font-sans"
               >
-                Send
+                {contact.form.submitButton.text}
               </button>
             </form>
           </div>

@@ -7,6 +7,7 @@ import myImage3 from './sample-proj/p-4.png';
 import myImage4 from './sample-proj/p-6.png';
 import myImage5 from './sample-proj/p-7.png';
 import Particles from "../../Particles";
+import projectsData from './Endpoint/projects.json';
 
 
 // ✅ Custom hook to extract colors from an image
@@ -360,63 +361,25 @@ export const Projects = () => {
     setTimeout(() => setShowAlert(false), 2000);
   };
 
-  // ✅ Project data array with multiple images
-const projects = [
-  {
-    image: myImage,
-    title: "UM Research Portal",
-    description:
-      "A website to efficiently manage, track, and store research titles, enabling categorization, collaboration, and easy searchable access to research projects.",
-    technologies: ["Bootstrap", "HTML", "MySQL", "PHP"],
-    colors: colors0,
-    gallery: [myImage]
-  },
-  {
-    image: myImage3,
-    title: "My Portfolio",
-    description:
-      "A portfolio of modern, responsive web apps built with React.js, Tailwind CSS, HTML, and CSS — focused on clean, intuitive design.",
-    technologies: ["Tailwind CSS", "React JS", "HTML", "CSS"],
-    colors: colors3,
-    gallery: [myImage3]
-  },
-  {
-    image: myImage1,
-    title: "Barangay Governance Management System",
-    description:
-      "The E-BRGY system modernizes barangay administration in the Philippines by automating processes and enhancing transparency.",
-    technologies: ["Bootstrap", "Hostinger", "MySQL", "PHP"],
-    colors: colors1,
-    gallery: [myImage1]
-  },
-  {
-    image: myImage2,
-    title: "PALMPC Coop Cashiering & Inventory System",
-    description:
-      "A cooperative cashiering and inventory system with barcode scanning and thermal printing for fast and accurate transactions.",
-    technologies: [".NET", "Visual Basic .NET", "SQLYOG", "Github"],
-    colors: colors2,
-    gallery: [myImage2]
-  },
-  {
-    image: myImage5,
-    title: "UMV Canteen Cashiering & Inventory System",
-    description:
-      "A comprehensive POS and inventory management platform equipped with barcode technology and thermal printing capabilities for seamless transaction processing.",
-    technologies: [".NET", "Visual Basic .NET", "SQLYOG", "Github"],
-    colors: colors5,
-    gallery: [myImage5]
-  },
-  {
-    image: myImage4,
-    title: "Amoguis Inventory App",
-    description:
-      "This is a Flutter mobile app with Firebase backend, featuring an AI chatbot to assist users with inventory management efficiently.",
-    technologies: ["Flutter", "Firebase", "Dart", "AI Chatbot"],
-    colors: colors4,
-    gallery: [myImage4]
-  }
-];
+  // ✅ Map image paths from JSON to imported images
+  const imageMap = {
+    './sample-proj/p-1.png': myImage,
+    './sample-proj/p-2.png': myImage1,
+    './sample-proj/p-4.png': myImage3,
+    './sample-proj/p-5.png': myImage2,
+    './sample-proj/p-6.png': myImage4,
+    './sample-proj/p-7.png': myImage5
+  };
+
+  const colorMap = [colors0, colors3, colors1, colors2, colors5, colors4];
+
+  // ✅ Load projects from JSON and map to include images and colors
+  const projects = projectsData.projects.map((project, index) => ({
+    ...project,
+    image: imageMap[project.image],
+    colors: colorMap[index],
+    gallery: project.gallery.map(img => imageMap[img])
+  }));
 
 
   return (
