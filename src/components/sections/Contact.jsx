@@ -122,7 +122,7 @@ export const Contact = () => {
                 </div>
                 <div className="rounded-2xl overflow-hidden border-4 border-gray-100 shadow-inner">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!4v1769703057051!6m8!1m7!1s3eEMFIe2ekkPS3BiDNzLUg!2m2!1d7.434235096094369!2d125.8323414728228!3f196.74212000267931!4f-12.831336741245764!5f0.7820865974627469"
+                    src="https://www.google.com/maps/embed?pb=!4v1770113435875!6m8!1m7!1s1Qn8PM63SqRgQlLh6zq7Bg!2m2!1d7.4342942184611!2d125.827941143386!3f182.7151432650223!4f-25.0077791441677!5f0.6838268825808721"
                     width="100%"
                     height="400"
                     style={{ border: 0 }}
