@@ -15,18 +15,30 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const pages = [
-    { component: <Home />, name: "home" },
-    { component: <Projects />, name: "projects" },
-    { component: <About />, name: "about" },
-    { component: <Contact />, name: "contact" }
-  ];
-
   const goToPage = (pageName) => {
-    const pageIndex = pages.findIndex(page => page.name === pageName);
+    const pageNames = ["home", "projects", "about", "contact"];
+    const pageIndex = pageNames.indexOf(pageName);
     if (pageIndex !== -1) {
       setCurrentPage(pageIndex);
       setMenuOpen(false);
+    }
+  };
+
+  const pageNames = ["home", "projects", "about", "contact"];
+
+  // ✅ Render component based on currentPage
+  const renderCurrentPage = () => {
+    switch (currentPage) {
+      case 0:
+        return <Home goToPage={goToPage} />;
+      case 1:
+        return <Projects />;
+      case 2:
+        return <About />;
+      case 3:
+        return <Contact />;
+      default:
+        return <Home goToPage={goToPage} />;
     }
   };
 
@@ -42,25 +54,24 @@ function App() {
           menuOpen={menuOpen} 
           setMenuOpen={setMenuOpen} 
           goToPage={goToPage}
-          currentPage={pages[currentPage].name}
+          currentPage={pageNames[currentPage]}
         />
         <MobileMenu 
           menuOpen={menuOpen} 
           setMenuOpen={setMenuOpen} 
           goToPage={goToPage}
-          currentPage={pages[currentPage].name}
+          currentPage={pageNames[currentPage]}
         />
 
         <main className="flex-1 w-full h-full overflow-y-auto overflow-x-hidden">
-          {/* Only render the current page */}
           <div className="w-full min-h-full">
-            {pages[currentPage].component}
+            {renderCurrentPage()}
           </div>
         </main>
 
         <SocialNavbar />
 
-        {currentPage === pages.length - 1 && <Footer />}
+        {currentPage === pageNames.length - 1 && <Footer />}
       </div>
     </>
   );

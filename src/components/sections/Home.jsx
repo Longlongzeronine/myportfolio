@@ -4,8 +4,13 @@ import myImage from "./sample-proj/1.png";
 import resume from "./sample-proj/FResume.pdf";
 import homeData from "./Endpoint/home.json";
 
-export const Home = () => {
+export const Home = ({ goToPage }) => { // ✅ ADD THIS - Accept goToPage prop
   const { home } = homeData;
+
+  // ✅ ADD THIS - Handler function
+  const handleKnowMeMore = () => {
+    goToPage("about");
+  };
 
   return (
     <section
@@ -26,7 +31,7 @@ export const Home = () => {
       />
 
       <RevealOnScroll>
-        <div className="flex flex-col md:flex-row items-center justify-center z-10 px-4 gap-8 max-w-6xl mx-auto">
+        <div className="flex flex-col md:flex-row items-center justify-center z-10 px-4 max-w-6xl mx-auto">
           <img
             src={myImage}
             alt={home.name}
@@ -53,13 +58,13 @@ export const Home = () => {
                 {home.buttons[0].text}
               </a>
 
-              {/* About Button */}
-              <a
-                href="#about"
-                className="border border-gray-500/50 text-white py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-dark-100"
+              {/* About Button - ✅ CHANGE THIS */}
+              <button
+                onClick={handleKnowMeMore}
+                className="border border-gray-500/50 text-white py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-dark-100 cursor-pointer"
               >
                 {home.buttons[1].text}
-              </a>
+              </button>
             </div>
           </div>
         </div>
