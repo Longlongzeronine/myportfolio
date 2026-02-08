@@ -10,13 +10,13 @@ export const About = () => {
 
   const renderIcon = (icon, color) => {
     const Icon = FaIcons[icon] || SiIcons[icon];
-    return <Icon className={`${color} text-2xl`} />;
+    return <Icon className={`${color} text-lg sm:text-2xl`} />;
   };
 
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-start relative bg-slate-950 pt-10 overflow-hidden pl-6 md:pl-44"
+      className="min-h-screen flex items-center justify-start relative bg-slate-950 pt-10 overflow-hidden px-3 sm:px-6 md:pl-44"
     >
       {/* Animated Particles Background */}
       <Particles
@@ -36,27 +36,29 @@ export const About = () => {
           
           {/* Left Content */}
           <div className="w-full md:w-3/4 mb-10">
-            <h2 className="text-5xl font-bold mb-8 text-white text-center md:text-left">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-white text-center md:text-left">
               {about.title}
             </h2>
 
-            <div className="rounded-xl p-6 md:p-8 border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
-              <p className="text-gray-300 mb-6 text-justify">
+            <div className="rounded-xl p-4 sm:p-6 md:p-8 border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
+              <p className="text-gray-300 mb-6 text-justify text-sm sm:text-base">
                 {about.description}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Frontend Skills */}
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-white">{about.sections.frontend}</h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">{about.sections.frontend}</h3>
+                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
                     {about.frontendSkills.map((skill, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-3 p-3 border border-gray-700 rounded-lg hover:bg-slate-800 hover:scale-105 transition cursor-pointer"
+                        className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 border border-gray-700 rounded-lg hover:bg-slate-800 hover:scale-105 transition cursor-pointer"
                       >
                         {renderIcon(skill.icon, skill.color)}
-                        <span className="text-white">{skill.name}</span>
+                        <span className="text-white text-xs sm:text-sm md:text-base break-words">
+                          {skill.name}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -64,15 +66,17 @@ export const About = () => {
 
                 {/* Backend Skills */}
                 <div>
-                  <h3 className="text-xl font-bold mb-4 text-white">{about.sections.backend}</h3>
-                  <div className="grid grid-cols-2 gap-4">
+                  <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">{about.sections.backend}</h3>
+                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
                     {about.backendSkills.map((skill, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-3 p-3 border border-gray-700 rounded-lg hover:bg-slate-800 hover:scale-105 transition cursor-pointer"
+                        className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 border border-gray-700 rounded-lg hover:bg-slate-800 hover:scale-105 transition cursor-pointer"
                       >
                         {renderIcon(skill.icon, skill.color)}
-                        <span className="text-white">{skill.name}</span>
+                        <span className="text-white text-xs sm:text-sm md:text-base break-words">
+                          {skill.name}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -82,11 +86,11 @@ export const About = () => {
 
             {/* Education */}
             <div className="mt-8">
-              <div className="p-6 rounded-xl border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
-                <h3 className="text-xl font-bold mb-4 text-white">{about.sections.education}</h3>
-                <ul className="list-disc list-inside text-gray-300 space-y-3">
+              <div className="p-4 sm:p-6 rounded-xl border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
+                <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">{about.sections.education}</h3>
+                <ul className="list-disc list-inside text-gray-300 space-y-3 text-xs sm:text-sm md:text-base">
                   {about.education.map((edu, index) => (
-                    <li key={index}>
+                    <li key={index} className="break-words">
                       <strong>{edu.title}</strong> – {edu.school}{" "}
                       {edu.year && `(${edu.year})`}
                     </li>
