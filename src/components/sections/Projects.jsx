@@ -13,12 +13,12 @@ import projectsData from './Endpoint/projects.json';
 // ✅ Custom hook to extract colors from an image
 const useImageColors = (imageSrc) => {
   const [colors, setColors] = useState({
-    primary: '#6b7280',
-    secondary: '#9ca3af',
-    light: '#e5e7eb',
-    dark: '#374151',
-    badgeBg: '#e5e7eb',
-    badgeText: '#374151'
+    primary: '#475569',
+    secondary: '#64748b',
+    light: '#94a3b8',
+    dark: '#1e293b',
+    badgeBg: '#1e293b',
+    badgeText: '#94a3b8'
   });
 
   useEffect(() => {
@@ -94,8 +94,8 @@ const useImageColors = (imageSrc) => {
             secondary: rgbToHex(secondary.r, secondary.g, secondary.b),
             light: lighten(primary, 0.7),
             dark: darken(primary, 0.4),
-            badgeBg: lighten(primary, 0.75),
-            badgeText: darken(primary, 0.5)
+            badgeBg: darken(primary, 0.6),
+            badgeText: lighten(primary, 0.6)
           });
         }
       } catch (error) {
@@ -107,7 +107,7 @@ const useImageColors = (imageSrc) => {
   return colors;
 };
 
-// ✅ Reusable Project Card Component
+// ✅ Reusable Project Card Component — same glass style as About cards
 const ProjectCard = ({
   image,
   title,
@@ -119,50 +119,60 @@ const ProjectCard = ({
 }) => {
   return (
     <div
-      className="relative rounded-xl border shadow-lg hover:-translate-y-1 transition cursor-pointer overflow-hidden"
-      style={{ borderColor: `${colors.primary}20` }}
+      className="relative rounded-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden"
+      style={{
+        border: '1px solid rgba(71,85,105,0.4)',
+        backgroundColor: 'rgba(15,23,42,0.45)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)',
+      }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = `${colors.primary}50`;
-        e.currentTarget.style.boxShadow = `0 4px 16px ${colors.primary}30`;
+        e.currentTarget.style.boxShadow = '0 8px 40px rgba(0,0,0,0.7), 0 20px 60px rgba(71,85,105,0.15), inset 0 1px 0 rgba(255,255,255,0.06)';
+        e.currentTarget.style.borderColor = 'rgba(100,116,139,0.6)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = `${colors.primary}20`;
-        e.currentTarget.style.boxShadow = '';
+        e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)';
+        e.currentTarget.style.borderColor = 'rgba(71,85,105,0.4)';
       }}
     >
+      {/* Latest badge */}
       <span
         className="absolute top-3 right-3 text-[11px] font-semibold px-2.5 py-0.5 rounded-full shadow-sm z-10"
-        style={{
-          backgroundColor: colors.badgeBg,
-          color: colors.badgeText
-        }}
+        style={{ backgroundColor: colors.badgeBg, color: colors.badgeText }}
       >
         Latest
       </span>
 
       <img src={image} alt={title} className="w-full h-50 object-cover" />
-      
-      <div className="p-6">
-        <h3 className="text-xl font-bold mb-2">{title}</h3>
-        <p className="text-dark mb-4">{description}</p>
 
+      {/* Accent divider */}
+      <div style={{ height: '2px', background: `linear-gradient(to right, rgba(100,116,139,0.6), transparent)` }} />
+
+      <div className="p-6">
+        <h3 className="text-xl font-bold mb-2" style={{ color: '#f1f5f9' }}>{title}</h3>
+        <p className="mb-5 leading-relaxed" style={{ color: '#cbd5e1' }}>{description}</p>
+
+        {/* Tech badges — same style as About skill tiles */}
         <div className="flex flex-wrap gap-2 mb-6">
           {technologies.map((tech, key) => (
             <span
               key={key}
-              className="py-1 px-3 rounded-full text-sm font-medium border transform transition-all duration-300 cursor-pointer hover:scale-105"
+              className="py-1 px-3 rounded-lg text-sm font-semibold transition-all duration-200 cursor-pointer hover:scale-105"
               style={{
-                backgroundColor: key % 2 === 0 ? colors.primary : colors.light,
-                borderColor: key % 2 === 0 ? colors.primary : colors.light,
-                color: key % 2 === 0 ? '#ffffff' : colors.dark
+                border: '1px solid rgba(71,85,105,0.4)',
+                backgroundColor: 'rgba(30,41,59,0.5)',
+                color: '#e2e8f0',
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'transparent';
-                e.target.style.color = key % 2 === 0 ? colors.primary : colors.secondary;
+                e.target.style.backgroundColor = 'rgba(51,65,85,0.6)';
+                e.target.style.borderColor = 'rgba(100,116,139,0.6)';
+                e.target.style.color = '#f8fafc';
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = key % 2 === 0 ? colors.primary : colors.light;
-                e.target.style.color = key % 2 === 0 ? '#ffffff' : colors.dark;
+                e.target.style.backgroundColor = 'rgba(30,41,59,0.5)';
+                e.target.style.borderColor = 'rgba(71,85,105,0.4)';
+                e.target.style.color = '#e2e8f0';
               }}
             >
               {tech}
@@ -170,39 +180,46 @@ const ProjectCard = ({
           ))}
         </div>
 
+        {/* Buttons */}
         <div className="flex justify-center gap-4">
           <button
             onClick={onFullScreen}
-            className="flex items-center justify-center gap-2 w-55 py-2 rounded-md transition cursor-pointer"
+            className="flex items-center justify-center gap-2 w-55 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer"
             style={{
-              border: `1px solid ${colors.primary}`,
-              color: colors.primary
+              border: '1px solid rgba(71,85,105,0.4)',
+              color: '#e2e8f0',
+              backgroundColor: 'rgba(30,41,59,0.5)',
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = colors.primary;
-              e.target.style.color = '#ffffff';
+              e.currentTarget.style.backgroundColor = 'rgba(51,65,85,0.6)';
+              e.currentTarget.style.borderColor = 'rgba(100,116,139,0.6)';
+              e.currentTarget.style.color = '#f8fafc';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'transparent';
-              e.target.style.color = colors.primary;
+              e.currentTarget.style.backgroundColor = 'rgba(30,41,59,0.5)';
+              e.currentTarget.style.borderColor = 'rgba(71,85,105,0.4)';
+              e.currentTarget.style.color = '#e2e8f0';
             }}
           >
             👁️ Full Screen
           </button>
           <button
             onClick={onGithubClick}
-            className="flex items-center justify-center gap-2 w-55 py-2 rounded-md transition cursor-pointer"
+            className="flex items-center justify-center gap-2 w-55 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer"
             style={{
-              border: `1px solid ${colors.secondary}`,
-              color: colors.secondary
+              border: '1px solid rgba(71,85,105,0.4)',
+              color: '#e2e8f0',
+              backgroundColor: 'rgba(30,41,59,0.5)',
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = colors.secondary;
-              e.target.style.color = '#ffffff';
+              e.currentTarget.style.backgroundColor = 'rgba(51,65,85,0.6)';
+              e.currentTarget.style.borderColor = 'rgba(100,116,139,0.6)';
+              e.currentTarget.style.color = '#f8fafc';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'transparent';
-              e.target.style.color = colors.secondary;
+              e.currentTarget.style.backgroundColor = 'rgba(30,41,59,0.5)';
+              e.currentTarget.style.borderColor = 'rgba(71,85,105,0.4)';
+              e.currentTarget.style.color = '#e2e8f0';
             }}
           >
             📁 GitHub
@@ -217,64 +234,33 @@ const ProjectCard = ({
 const ImageGallery = ({ images, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
+  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % images.length);
+  const goToPrevious = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const goToImage = (index) => setCurrentIndex(index);
 
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const goToImage = (index) => {
-    setCurrentIndex(index);
-  };
-
-  // Keyboard navigation
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.key === 'ArrowRight') goToNext();
       if (e.key === 'ArrowLeft') goToPrevious();
       if (e.key === 'Escape') onClose();
     };
-
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, []);
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50">
-      {/* Close Button */}
-      <button 
-        onClick={onClose} 
-        className="absolute top-5 right-5 text-white text-4xl font-bold z-50 hover:text-gray-300 cursor-pointer transition"
-      >
+    <div className="fixed inset-0 flex items-center justify-center z-50" style={{ backgroundColor: 'rgba(2,6,23,0.97)' }}>
+      <button onClick={onClose} className="absolute top-5 right-5 text-slate-300 text-4xl font-bold z-50 hover:text-white cursor-pointer transition">
         &times;
       </button>
-
-      {/* Previous Button */}
       {images.length > 1 && (
-        <button 
-          onClick={goToPrevious} 
-          className="absolute left-5 text-white text-5xl font-bold z-50 hover:text-gray-300 cursor-pointer transition transform hover:scale-110"
-        >
+        <button onClick={goToPrevious} className="absolute left-5 text-slate-300 text-5xl font-bold z-50 hover:text-white cursor-pointer transition transform hover:scale-110">
           ‹
         </button>
       )}
-
-      {/* Image Container */}
       <div className="flex flex-col items-center justify-center max-w-6xl w-full px-4">
-        <img 
-          src={images[currentIndex]} 
-          alt={`Screenshot ${currentIndex + 1}`} 
-          className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl" 
-        />
-        
-        {/* Image Counter */}
-        <div className="mt-4 text-white text-lg font-semibold">
-          {currentIndex + 1} / {images.length}
-        </div>
-
-        {/* Thumbnail Navigation */}
+        <img src={images[currentIndex]} alt={`Screenshot ${currentIndex + 1}`} className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl" />
+        <div className="mt-4 text-slate-400 text-lg font-semibold">{currentIndex + 1} / {images.length}</div>
         {images.length > 1 && (
           <div className="flex gap-2 mt-6 overflow-x-auto max-w-full pb-2">
             {images.map((img, index) => (
@@ -284,22 +270,15 @@ const ImageGallery = ({ images, onClose }) => {
                 alt={`Thumbnail ${index + 1}`}
                 onClick={() => goToImage(index)}
                 className={`h-16 w-24 object-cover rounded cursor-pointer transition border-2 ${
-                  index === currentIndex 
-                    ? 'border-blue-500 opacity-100' 
-                    : 'border-transparent opacity-50 hover:opacity-75'
+                  index === currentIndex ? 'border-slate-400 opacity-100' : 'border-transparent opacity-40 hover:opacity-65'
                 }`}
               />
             ))}
           </div>
         )}
       </div>
-
-      {/* Next Button */}
       {images.length > 1 && (
-        <button 
-          onClick={goToNext} 
-          className="absolute right-5 text-white text-5xl font-bold z-50 hover:text-gray-300 cursor-pointer transition transform hover:scale-110"
-        >
+        <button onClick={goToNext} className="absolute right-5 text-slate-300 text-5xl font-bold z-50 hover:text-white cursor-pointer transition transform hover:scale-110">
           ›
         </button>
       )}
@@ -311,7 +290,6 @@ export const Projects = () => {
   const [galleryImages, setGalleryImages] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
 
-  // ✅ Extract colors from each image
   const colors0 = useImageColors(myImage);
   const colors1 = useImageColors(myImage1);
   const colors2 = useImageColors(myImage2);
@@ -319,32 +297,24 @@ export const Projects = () => {
   const colors4 = useImageColors(myImage4);
   const colors5 = useImageColors(myImage5);
 
-  // ✅ Hide/Show SocialNavbar when gallery opens/closes
   useEffect(() => {
     const socialNavbar = document.getElementById('social-navbar');
-    
     if (galleryImages) {
-      // Hide SocialNavbar when gallery is open
       if (socialNavbar) {
         socialNavbar.style.opacity = '0';
         socialNavbar.style.visibility = 'hidden';
         socialNavbar.style.pointerEvents = 'none';
         socialNavbar.style.transition = 'opacity 0.3s ease, visibility 0.3s ease';
       }
-      // Prevent body scroll
       document.body.style.overflow = 'hidden';
     } else {
-      // Show SocialNavbar when gallery is closed
       if (socialNavbar) {
         socialNavbar.style.opacity = '1';
         socialNavbar.style.visibility = 'visible';
         socialNavbar.style.pointerEvents = 'auto';
       }
-      // Restore body scroll
       document.body.style.overflow = '';
     }
-
-    // Cleanup function
     return () => {
       if (socialNavbar) {
         socialNavbar.style.opacity = '1';
@@ -355,13 +325,11 @@ export const Projects = () => {
     };
   }, [galleryImages]);
 
-  // Function to handle GitHub button click
   const handleGithubClick = () => {
     setShowAlert(true);
     setTimeout(() => setShowAlert(false), 2000);
   };
 
-  // ✅ Map image paths from JSON to imported images
   const imageMap = {
     './sample-proj/p-1.png': myImage,
     './sample-proj/p-2.png': myImage1,
@@ -373,7 +341,6 @@ export const Projects = () => {
 
   const colorMap = [colors0, colors3, colors1, colors2, colors5, colors4];
 
-  // ✅ Load projects from JSON and map to include images and colors
   const projects = projectsData.projects.map((project, index) => ({
     ...project,
     image: imageMap[project.image],
@@ -381,46 +348,34 @@ export const Projects = () => {
     gallery: project.gallery.map(img => imageMap[img])
   }));
 
-
   return (
-    <section id="projects" className="relative min-h-screen flex items-center justify-center py-20 bg-white overflow-hidden">
-      {/* ✅ Particle Background */}
-      <Particles
-        className="absolute inset-0 w-full h-full -z-10"
-        particleCount={400}
-        particleSpread={30}
-        particleBaseSize={1000}
-        sizeRandomness={0.7}
-        speed={0.25}
-        particleColors={['#ff0000', '#00a2ff', '#ffe600', '#00d26a', '#ff5aad']}
-        moveParticlesOnHover={false}
-        alphaParticles={false}
-        disableRotation={true}
-      />
+    <section id="projects" className="relative min-h-screen flex items-center justify-center py-20 overflow-hidden" style={{ backgroundColor: '#020617' }}>
 
-      {/* ✅ Custom Alert */}
+      {/* Background */}
+      <div className="absolute inset-0">
+        <Particles />
+      </div>
+
+      {/* Alert */}
       {showAlert && (
-        <div className="fixed top-5 right-5 bg-yellow-300 text-yellow-900 font-semibold px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in">
+        <div className="fixed top-5 right-5 bg-slate-700 text-slate-200 font-semibold px-6 py-3 rounded-lg shadow-lg z-50 animate-slide-in border border-slate-600">
           📁 Coming Soon!
         </div>
       )}
 
       <RevealOnScroll>
-        <div className="max-w-5xl mx-auto px-4 pt-4 relative z-10">
+        <div className="max-w-5xl mx-auto px-4 pt-10 relative z-10">
           <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold mb-4 text-center text-black">
+            <h1 className="text-5xl font-bold mb-4 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
               Featured{" "}
-              <span className="bg-gradient-to-r from-indigo-800 via-purple-700 to-indigo-800 bg-clip-text text-transparent">
-                Projects
-              </span>
+               <span className="bg-gradient-to-r from-slate-400 via-slate-200 to-slate-400 bg-clip-text text-transparent">Projects</span>
             </h1>
-
-            <p className="text-xl text-gray-600 max-w-5xl mx-auto pt-3">
+            <p className="text-xl max-w-5xl mx-auto pt-3" style={{ color: '#94a3b8' }}>
               A collection of projects that showcase my skills and passion for development.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-black">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project, index) => (
               <ProjectCard
                 key={index}
@@ -437,15 +392,13 @@ export const Projects = () => {
         </div>
       </RevealOnScroll>
 
-      {/* Image Gallery Overlay */}
       {galleryImages && (
-        <ImageGallery 
-          images={galleryImages} 
-          onClose={() => setGalleryImages(null)} 
+        <ImageGallery
+          images={galleryImages}
+          onClose={() => setGalleryImages(null)}
         />
       )}
 
-      {/* Slide-in animation for alert */}
       <style>
         {`
           @keyframes slide-in {

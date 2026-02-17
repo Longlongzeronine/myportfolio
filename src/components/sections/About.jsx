@@ -16,47 +16,72 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="min-h-screen flex items-center justify-start relative bg-slate-950 pt-10 overflow-hidden px-3 sm:px-6 md:pl-44"
+      className="min-h-screen flex items-center justify-start relative pt-10 overflow-hidden px-3 sm:px-6 md:pl-44"
+      style={{ backgroundColor: '#020617' }}
     >
-      {/* Animated Particles Background */}
-      <Particles
-        className="absolute inset-0 z-0 w-full h-full"
-        particleCount={2000}
-        particleSpread={40}
-        particleBaseSize={200}
-        speed={0.25}
-        moveParticlesOnHover={false}
-        hoverEffectStrength={0.5}
-        alphaParticles={false}
-        disableRotation={true}
-      />
+      {/* Animated Background */}
+      <div className="absolute inset-0">
+        <Particles />
+      </div>
 
       <RevealOnScroll>
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-10 w-full max-w-7xl z-10">
-          
+
           {/* Left Content */}
           <div className="w-full md:w-3/4 mb-10">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-white text-center md:text-left">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center md:text-left" style={{ color: '#f1f5f9' }}>
               {about.title}
             </h2>
 
-            <div className="rounded-xl p-4 sm:p-6 md:p-8 border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
-              <p className="text-gray-300 mb-6 text-justify text-sm sm:text-base">
+            {/* Skills Card */}
+            <div
+              className="rounded-xl p-4 sm:p-6 md:p-8 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              style={{
+                border: '1px solid rgba(71,85,105,0.4)',
+                backgroundColor: 'rgba(15,23,42,0.45)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '0 8px 40px rgba(0,0,0,0.7), 0 20px 60px rgba(71,85,105,0.15), inset 0 1px 0 rgba(255,255,255,0.06)';
+                e.currentTarget.style.borderColor = 'rgba(100,116,139,0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)';
+                e.currentTarget.style.borderColor = 'rgba(71,85,105,0.4)';
+              }}
+            >
+              <p className="mb-6 text-justify text-sm sm:text-base leading-relaxed" style={{ color: '#cbd5e1' }}>
                 {about.description}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Frontend Skills */}
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">{about.sections.frontend}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-4" style={{ color: '#f1f5f9' }}>{about.sections.frontend}</h3>
                   <div className="grid grid-cols-2 gap-2 sm:gap-4">
                     {about.frontendSkills.map((skill, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 border border-gray-700 rounded-lg hover:bg-slate-800 hover:scale-105 transition cursor-pointer"
+                        className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:scale-105 transition-all duration-200 cursor-pointer"
+                        style={{
+                          border: '1px solid rgba(71,85,105,0.4)',
+                          backgroundColor: 'rgba(30,41,59,0.5)',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(51,65,85,0.6)';
+                          e.currentTarget.style.borderColor = 'rgba(100,116,139,0.6)';
+                          e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.4)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(30,41,59,0.5)';
+                          e.currentTarget.style.borderColor = 'rgba(71,85,105,0.4)';
+                          e.currentTarget.style.boxShadow = '';
+                        }}
                       >
                         {renderIcon(skill.icon, skill.color)}
-                        <span className="text-white text-xs sm:text-sm md:text-base break-words">
+                        <span className="text-xs sm:text-sm md:text-base break-words" style={{ color: '#e2e8f0' }}>
                           {skill.name}
                         </span>
                       </div>
@@ -66,15 +91,29 @@ export const About = () => {
 
                 {/* Backend Skills */}
                 <div>
-                  <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">{about.sections.backend}</h3>
+                  <h3 className="text-lg sm:text-xl font-bold mb-4" style={{ color: '#f1f5f9' }}>{about.sections.backend}</h3>
                   <div className="grid grid-cols-2 gap-2 sm:gap-4">
                     {about.backendSkills.map((skill, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 border border-gray-700 rounded-lg hover:bg-slate-800 hover:scale-105 transition cursor-pointer"
+                        className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg hover:scale-105 transition-all duration-200 cursor-pointer"
+                        style={{
+                          border: '1px solid rgba(71,85,105,0.4)',
+                          backgroundColor: 'rgba(30,41,59,0.5)',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(51,65,85,0.6)';
+                          e.currentTarget.style.borderColor = 'rgba(100,116,139,0.6)';
+                          e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.4)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = 'rgba(30,41,59,0.5)';
+                          e.currentTarget.style.borderColor = 'rgba(71,85,105,0.4)';
+                          e.currentTarget.style.boxShadow = '';
+                        }}
                       >
                         {renderIcon(skill.icon, skill.color)}
-                        <span className="text-white text-xs sm:text-sm md:text-base break-words">
+                        <span className="text-xs sm:text-sm md:text-base break-words" style={{ color: '#e2e8f0' }}>
                           {skill.name}
                         </span>
                       </div>
@@ -84,15 +123,34 @@ export const About = () => {
               </div>
             </div>
 
-            {/* Education */}
+            {/* Education Card */}
             <div className="mt-8">
-              <div className="p-4 sm:p-6 rounded-xl border border-gray-300 hover:-translate-y-1 transition-all cursor-pointer">
-                <h3 className="text-lg sm:text-xl font-bold mb-4 text-white">{about.sections.education}</h3>
-                <ul className="list-disc list-inside text-gray-300 space-y-3 text-xs sm:text-sm md:text-base">
+              <div
+                className="p-4 sm:p-6 rounded-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                style={{
+                  border: '1px solid rgba(71,85,105,0.4)',
+                  backgroundColor: 'rgba(15,23,42,0.45)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 8px 40px rgba(0,0,0,0.7), 0 20px 60px rgba(71,85,105,0.15), inset 0 1px 0 rgba(255,255,255,0.06)';
+                  e.currentTarget.style.borderColor = 'rgba(100,116,139,0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 4px 24px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)';
+                  e.currentTarget.style.borderColor = 'rgba(71,85,105,0.4)';
+                }}
+              >
+                <h3 className="text-lg sm:text-xl font-bold mb-4" style={{ color: '#f1f5f9' }}>{about.sections.education}</h3>
+                <ul className="list-disc list-inside space-y-3 text-xs sm:text-sm md:text-base" style={{ color: '#cbd5e1' }}>
                   {about.education.map((edu, index) => (
-                    <li key={index} className="break-words">
-                      <strong>{edu.title}</strong> – {edu.school}{" "}
-                      {edu.year && `(${edu.year})`}
+                    <li key={index} className="break-words leading-relaxed">
+                      <strong style={{ color: '#e2e8f0' }}>{edu.title}</strong>{' '}
+                      <span style={{ color: '#94a3b8' }}>–</span>{' '}
+                      {edu.school}{' '}
+                      {edu.year && <span style={{ color: '#64748b' }}>({edu.year})</span>}
                     </li>
                   ))}
                 </ul>
@@ -100,14 +158,15 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Right Image — EXACT same layout as before */}
-          <div className="w-full md:w-1/4 flex justify-center md:justify-end ml-10 md:block mr-40 hidden mt-20">
+          {/* Right Image */}
+          <div className="w-full md:w-1/4 flex justify-center md:justify-end ml-10 md:block mr-40 mt-20">
             <img
               src={myImage}
               alt={about.imageAlt}
               className="max-w-[250px] md:max-w-[300px] lg:max-w-[400px] rounded-lg"
             />
           </div>
+
         </div>
       </RevealOnScroll>
     </section>

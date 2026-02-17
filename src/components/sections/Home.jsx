@@ -4,10 +4,9 @@ import myImage from "./sample-proj/1.png";
 import resume from "./sample-proj/FResume.pdf";
 import homeData from "./Endpoint/home.json";
 
-export const Home = ({ goToPage }) => { // ✅ ADD THIS - Accept goToPage prop
+export const Home = ({ goToPage }) => {
   const { home } = homeData;
 
-  // ✅ ADD THIS - Handler function
   const handleKnowMeMore = () => {
     goToPage("about");
   };
@@ -18,24 +17,28 @@ export const Home = ({ goToPage }) => { // ✅ ADD THIS - Accept goToPage prop
       className="min-h-screen flex items-center justify-center relative bg-slate-950 pt-10 overflow-hidden"
     >
       {/* Animated Particles Background */}
-      <Particles
-        className="absolute inset-0 z-0 w-full h-full"
-        particleCount={2000}
-        particleSpread={40}
-        particleBaseSize={200}
-        speed={0.25}
-        moveParticlesOnHover={true}
-        hoverEffectStrength={0.5}
-        alphaParticles={false}
-        disableRotation={true}
-      />
+      <div className="absolute inset-0 z-0">
+        <Particles
+          colors={["#ff5c7a"]}
+          rotation={0}
+          speed={0.2}
+          scale={1}
+          frequency={1}
+          warpStrength={1}
+          mouseInfluence={1}
+          parallax={0.5}
+          noise={0.1}
+          transparent={false}
+          autoRotate={5}
+        />
+      </div>
 
       <RevealOnScroll>
         <div className="flex flex-col md:flex-row items-center justify-center z-10 px-4 max-w-6xl mx-auto">
           <img
             src={myImage}
             alt={home.name}
-            className="w-64 md:w-80 h-auto hidden md:block flex-shrink-0"
+            className="w-64 md:w-80 h-auto flex-shrink-0"
           />
 
           <div className="text-center z-10 px-4">
@@ -58,7 +61,7 @@ export const Home = ({ goToPage }) => { // ✅ ADD THIS - Accept goToPage prop
                 {home.buttons[0].text}
               </a>
 
-              {/* About Button - ✅ CHANGE THIS */}
+              {/* About Button */}
               <button
                 onClick={handleKnowMeMore}
                 className="border border-gray-500/50 text-white py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-dark-100 cursor-pointer"
