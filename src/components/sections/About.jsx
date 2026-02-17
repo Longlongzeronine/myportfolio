@@ -158,8 +158,8 @@ export const About = () => {
             </div>
           </div>
 
-          {/* Right Image */}
-          <div className="w-full md:w-1/4 flex justify-center md:justify-end ml-10 md:block mr-40 mt-20">
+          {/* Right Image - Hidden on mobile and tablet, visible on lg screens and up */}
+          <div className="hidden lg:flex w-full md:w-1/4 justify-center md:justify-end ml-10 mr-40 mt-20">
             <img
               src={myImage}
               alt={about.imageAlt}

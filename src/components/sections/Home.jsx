@@ -35,10 +35,11 @@ export const Home = ({ goToPage }) => {
 
       <RevealOnScroll>
         <div className="flex flex-col md:flex-row items-center justify-center z-10 px-4 max-w-6xl mx-auto">
+          {/* Image - Hidden on mobile and tablet, visible on md screens and up */}
           <img
             src={myImage}
             alt={home.name}
-            className="w-64 md:w-80 h-auto flex-shrink-0"
+            className="hidden md:block w-64 md:w-80 h-auto flex-shrink-0"
           />
 
           <div className="text-center z-10 px-4">
